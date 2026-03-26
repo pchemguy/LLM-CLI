@@ -23,12 +23,27 @@ REM downloaded binary). The installation process does something else. Be aware t
 REM installation mode may have a horrible memory leakage problem, with memory usage in
 REM excess of forty GB RAM has been observed.
 
-if not exist "%USERPROFILE%\.local\bin\claude.exe" (
+set "CLAUDE=%USERPROFILE%\.local\bin\claude.exe"
+if not exist "%CLAUDE%" (
     echo Installing Claude...
     call curl -fsSL https://claude.ai/install.cmd -o install_claude.cmd && install_claude.cmd
 ) else (
     echo Using existing Claude copy.
-    echo To reinstall, manually delete "%USERPROFILE%\.local\bin\claude.exe".
+    echo To reinstall, manually delete "%CLAUDE%".
 )
 
-copy /Y "%USERPROFILE%\.local\bin\claude.exe" "%~dp0Anaconda\claude.exe"
+copy /Y "%CLAUDE%" "%~dp0Anaconda\claude.exe"
+
+
+set "SPECIFY=%USERPROFILE%\.local\bin\specify.exe"
+if not exist "%SPECIFY%" (
+    echo Installing Spec Kit Specify...
+    call uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+) else (
+    echo Using existing Spec Kit Specify copy.
+    echo To reinstall, manually delete "%SPECIFY%".
+)
+
+copy /Y "%SPECIFY%" "%~dp0Anaconda\specify.exe"
+
+pause
