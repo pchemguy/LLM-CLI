@@ -1,0 +1,34 @@
+@echo off
+
+call "%~dp0conda_far.bat" /batch
+
+set "NPM_CACHE=%USERPROFILE%\Downloads\CACHE\Claude"
+if not exist "%NPM_CACHE%" (mkdir "%NPM_CACHE%")
+
+call npm install --cache "%NPM_CACHE%" -g @google/gemini-cli
+call npm install --cache "%NPM_CACHE%" -g @openai/codex
+
+REM Claude has a quirk and fails to detect bash. This VAR must be set
+REM before running the installer or CLI. Also added to condar_far.bat.
+set "CLAUDE_CODE_GIT_BASH_PATH=%~dp0Anaconda\Library\bin\bash.exe"
+
+REM The script downloaded from https://claude.ai/install.cmd downloads the latest binary,
+REM which acts as CLI and can also be invoked as installer (see install_claude.cmd).
+REM
+REM The binary is downloaded into %USERPROFILE%\.claude\downloads\claude(...).exe and is
+REM deleted by install_claude.cmd.
+REM
+REM The script installs "claude.exe in %USERPROFILE%\.local\bin\claude.exe (a copy of the
+REM downloaded binary). The installation process does something else. Be aware that the
+REM installation mode may have a horrible memory leakage problem, with memory usage in
+REM excess of forty GB RAM has been observed.
+
+if not exist "%USERPROFILE%\.local\bin\claude.exe" (
+    echo Installing Claude...
+    call curl -fsSL https://claude.ai/install.cmd -o install_claude.cmd && install_claude.cmd
+) else (
+    echo Using existing Claude copy.
+    echo To reinstall, manually delete "%USERPROFILE%\.local\bin\claude.exe".
+)
+
+copy /Y "%USERPROFILE%\.local\bin\claude.exe" "%~dp0Anaconda\claude.exe"

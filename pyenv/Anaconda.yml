@@ -1,0 +1,17 @@
+name: llm_clis
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - numpy
+  - matplotlib
+  - m2-base
+  - nodejs
+  - pytest
+  - pytest-cov
+  - pytest-benchmark
+  - coverage
+  - colorama
+  - jsonschema
+  - pyyaml
+  - pip
