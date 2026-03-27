@@ -23,7 +23,7 @@ REM downloaded binary). The installation process does something else. Be aware t
 REM installation mode may have a horrible memory leakage problem, with memory usage in
 REM excess of forty GB RAM has been observed.
 
-REM VPN with acceptable geolocation must be active or curl... will fail.
+REM VPN with acceptable geolocation must be active or curl... may fail.
 
 set "CLAUDE=%USERPROFILE%\.local\bin\claude.exe"
 if not exist "%CLAUDE%" (
