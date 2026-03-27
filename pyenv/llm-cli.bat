@@ -5,7 +5,13 @@ call "%~dp0conda_far.bat" /batch
 set "NPM_CACHE=%USERPROFILE%\Downloads\CACHE\Claude"
 if not exist "%NPM_CACHE%" (mkdir "%NPM_CACHE%")
 
+echo:
+echo ===== Installing Gemini CLI =====
+echo:
 call npm install --cache "%NPM_CACHE%" -g @google/gemini-cli
+echo:
+echo ===== Installing Codex CLI =====
+echo:
 call npm install --cache "%NPM_CACHE%" -g @openai/codex
 
 REM Claude has a quirk and fails to detect bash. This VAR must be set
@@ -25,10 +31,13 @@ REM excess of forty GB RAM has been observed.
 
 REM VPN with acceptable geolocation must be active or curl... may fail.
 
+echo:
+echo ===== Installing Claude CLI =====
+echo:
 set "CLAUDE=%USERPROFILE%\.local\bin\claude.exe"
 if not exist "%CLAUDE%" (
     echo Installing Claude...
-    call curl -fsSL https://claude.ai/install.cmd -o install_claude.cmd && install_claude.cmd
+    call curl -fsSL https://claude.ai/install.cmd -o install_claude.cmd && call install_claude.cmd
 ) else (
     echo Using existing Claude copy.
     echo To reinstall, manually delete "%CLAUDE%".
@@ -37,6 +46,9 @@ if not exist "%CLAUDE%" (
 copy /Y "%CLAUDE%" "%~dp0Anaconda\claude.exe"
 
 
+echo:
+echo ===== Installing Spec Kit Specify =====
+echo:
 set "SPECIFY=%USERPROFILE%\.local\bin\specify.exe"
 if not exist "%SPECIFY%" (
     echo Installing Spec Kit Specify...
