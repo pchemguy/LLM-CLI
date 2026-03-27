@@ -164,8 +164,8 @@ echo %OKOK% Conda activation succeeded.
 
 :: --- Claude Code Quirk ---
 
+rem Claude Code Quirk -- If this line is removed, some really weird bug with "/batch" and environment occurs.
 set "CLAUDE_CODE_GIT_BASH_PATH=%CONDA_PREFIX%\Library\bin\bash.exe"
-
 echo %OKOK% CLAUDE_CODE_GIT_BASH_PATH is set.
 
 :: --- Use "/batch" to activate shell environment without starting FAR MANAGER ---
