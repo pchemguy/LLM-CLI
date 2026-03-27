@@ -164,7 +164,7 @@ echo %OKOK% Conda activation succeeded.
 
 :: --- Claude Code Quirk ---
 
-rem Claude Code Quirk -- If this line is removed, some really weird bug with "/batch" and environment occurs.
+rem Claude Code Quirk -- If this line is removed, some really weird bug with "/batch" and environment may occur on Winows 10 LTSC 2021.
 set "CLAUDE_CODE_GIT_BASH_PATH=%CONDA_PREFIX%\Library\bin\bash.exe"
 echo %OKOK% CLAUDE_CODE_GIT_BASH_PATH is set.
 
