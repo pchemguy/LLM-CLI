@@ -1,9 +1,8 @@
 ---
 url: https://github.com/github/spec-kit/blob/main/README.md
 ---
-
 <div align="center">
-    <img src="https://github.com/github/spec-kit/raw/main/media/logo_large.webp" alt="Spec Kit Logo" width="200" height="200"/>
+    <img src="[https://github.com/github/spec-kit/raw/main/media/logo_large.webp" alt="Spec Kit Logo" width="200" height="200"/>
     <h1>🌱 Spec Kit</h1>
     <h3><em>Build high-quality software faster.</em></h3>
 </div>
@@ -258,52 +257,90 @@ Community projects that extend, visualize, or build on Spec Kit:
 
 ## 🤖 Supported AI Agents
 
-| Agent                                                                                | Support | Notes                                                                                                                                     |
-| ------------------------------------------------------------------------------------ | ------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| [Qoder CLI](https://qoder.com/cli)                                                   | ✅      |                                                                                                                                           |
-| [Kiro CLI](https://kiro.dev/docs/cli/)                                               | ✅      | Use `--ai kiro-cli` (alias: `--ai kiro`)                                                                                                 |
-| [Amp](https://ampcode.com/)                                                          | ✅      |                                                                                                                                           |
-| [Auggie CLI](https://docs.augmentcode.com/cli/overview)                              | ✅      |                                                                                                                                           |
-| [Claude Code](https://www.anthropic.com/claude-code)                                 | ✅      |                                                                                                                                           |
-| [CodeBuddy CLI](https://www.codebuddy.ai/cli)                                        | ✅      |                                                                                                                                           |
-| [Codex CLI](https://github.com/openai/codex)                                         | ✅      | Requires `--ai-skills`. Codex recommends [skills](https://developers.openai.com/codex/skills) and treats [custom prompts](https://developers.openai.com/codex/custom-prompts) as deprecated. Spec-kit installs Codex skills into `.agents/skills` and invokes them as `$speckit-<command>`. |
-| [Cursor](https://cursor.sh/)                                                         | ✅      |                                                                                                                                           |
-| [Gemini CLI](https://github.com/google-gemini/gemini-cli)                            | ✅      |                                                                                                                                           |
-| [GitHub Copilot](https://code.visualstudio.com/)                                     | ✅      |                                                                                                                                           |
-| [IBM Bob](https://www.ibm.com/products/bob)                                          | ✅      | IDE-based agent with slash command support                                                                                                |
-| [Jules](https://jules.google.com/)                                                   | ✅      |                                                                                                                                           |
-| [Kilo Code](https://github.com/Kilo-Org/kilocode)                                    | ✅      |                                                                                                                                           |
-| [opencode](https://opencode.ai/)                                                     | ✅      |                                                                                                                                           |
-| [Pi Coding Agent](https://pi.dev)                                                    | ✅      | Pi doesn't have MCP support out of the box, so `taskstoissues` won't work as intended. MCP support can be added via [extensions](https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent#extensions) |
-| [Qwen Code](https://github.com/QwenLM/qwen-code)                                     | ✅      |                                                                                                                                           |
-| [Roo Code](https://roocode.com/)                                                     | ✅      |                                                                                                                                           |
-| [SHAI (OVHcloud)](https://github.com/ovh/shai)                                       | ✅      |                                                                                                                                           |
-| [Tabnine CLI](https://docs.tabnine.com/main/getting-started/tabnine-cli)             | ✅      |                                                                                                                                           |
-| [Mistral Vibe](https://github.com/mistralai/mistral-vibe)                            | ✅      |                                                                                                                                           |
-| [Kimi Code](https://code.kimi.com/)                                                  | ✅      |                                                                                                                                           |
-| [iFlow CLI](https://docs.iflow.cn/en/cli/quickstart)                                 | ✅      |                                                                                                                                           |
-| [Windsurf](https://windsurf.com/)                                                    | ✅      |                                                                                                                                           |
-| [Junie](https://junie.jetbrains.com/)                                                | ✅      |                                                                                                                                           |
-| [Antigravity (agy)](https://antigravity.google/)                                     | ✅      | Requires `--ai-skills` |
-| [Trae](https://www.trae.ai/)                                                         | ✅      |                                                                                                                                           |
-| Generic                                                                              | ✅      | Bring your own agent — use `--ai generic --ai-commands-dir <path>` for unsupported agents                                                 |
+| Agent                                                                    | Support | Notes                                                                                                                                                                                                                                                                                       |
+| ------------------------------------------------------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Qoder CLI](https://qoder.com/cli)                                       | ✅       |                                                                                                                                                                                                                                                                                             |
+| [Kiro CLI](https://kiro.dev/docs/cli/)                                   | ✅       | Use `--ai kiro-cli` (alias: `--ai kiro`)                                                                                                                                                                                                                                                    |
+| [Amp](https://ampcode.com/)                                              | ✅       |                                                                                                                                                                                                                                                                                             |
+| [Auggie CLI](https://docs.augmentcode.com/cli/overview)                  | ✅       |                                                                                                                                                                                                                                                                                             |
+| [Claude Code](https://www.anthropic.com/claude-code)                     | ✅       |                                                                                                                                                                                                                                                                                             |
+| [CodeBuddy CLI](https://www.codebuddy.ai/cli)                            | ✅       |                                                                                                                                                                                                                                                                                             |
+| [Codex CLI](https://github.com/openai/codex)                             | ✅       | Requires `--ai-skills`. Codex recommends [skills](https://developers.openai.com/codex/skills) and treats [custom prompts](https://developers.openai.com/codex/custom-prompts) as deprecated. Spec-kit installs Codex skills into `.agents/skills` and invokes them as `$speckit-<command>`. |
+| [Cursor](https://cursor.sh/)                                             | ✅       |                                                                                                                                                                                                                                                                                             |
+| [Gemini CLI](https://github.com/google-gemini/gemini-cli)                | ✅       |                                                                                                                                                                                                                                                                                             |
+| [GitHub Copilot](https://code.visualstudio.com/)                         | ✅       |                                                                                                                                                                                                                                                                                             |
+| [IBM Bob](https://www.ibm.com/products/bob)                              | ✅       | IDE-based agent with slash command support                                                                                                                                                                                                                                                  |
+| [Jules](https://jules.google.com/)                                       | ✅       |                                                                                                                                                                                                                                                                                             |
+| [Kilo Code](https://github.com/Kilo-Org/kilocode)                        | ✅       |                                                                                                                                                                                                                                                                                             |
+| [opencode](https://opencode.ai/)                                         | ✅       |                                                                                                                                                                                                                                                                                             |
+| [Pi Coding Agent](https://pi.dev)                                        | ✅       | Pi doesn't have MCP support out of the box, so `taskstoissues` won't work as intended. MCP support can be added via [extensions](https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent#extensions)                                                                            |
+| [Qwen Code](https://github.com/QwenLM/qwen-code)                         | ✅       |                                                                                                                                                                                                                                                                                             |
+| [Roo Code](https://roocode.com/)                                         | ✅       |                                                                                                                                                                                                                                                                                             |
+| [SHAI (OVHcloud)](https://github.com/ovh/shai)                           | ✅       |                                                                                                                                                                                                                                                                                             |
+| [Tabnine CLI](https://docs.tabnine.com/main/getting-started/tabnine-cli) | ✅       |                                                                                                                                                                                                                                                                                             |
+| [Mistral Vibe](https://github.com/mistralai/mistral-vibe)                | ✅       |                                                                                                                                                                                                                                                                                             |
+| [Kimi Code](https://code.kimi.com/)                                      | ✅       |                                                                                                                                                                                                                                                                                             |
+| [iFlow CLI](https://docs.iflow.cn/en/cli/quickstart)                     | ✅       |                                                                                                                                                                                                                                                                                             |
+| [Windsurf](https://windsurf.com/)                                        | ✅       |                                                                                                                                                                                                                                                                                             |
+| [Junie](https://junie.jetbrains.com/)                                    | ✅       |                                                                                                                                                                                                                                                                                             |
+| [Antigravity (agy)](https://antigravity.google/)                         | ✅       | Requires `--ai-skills`                                                                                                                                                                                                                                                                      |
+| [Trae](https://www.trae.ai/)                                             | ✅       |                                                                                                                                                                                                                                                                                             |
+| Generic                                                                  | ✅       | Bring your own agent — use `--ai generic --ai-commands-dir <path>` for unsupported agents                                                                                                                                                                                                   |
+
+## Available Slash Commands
+
+After running `specify init`, your AI coding agent will have access to these slash commands for structured development. If `--ai-skills` flag is indicated, agent skills are installed instead of slash-command prompt files.
+
+#### Core Commands
+
+Essential commands for the Spec-Driven Development workflow:
+
+| Command                 | Agent Skill             | Description                                                              |
+| ----------------------- | ----------------------- | ------------------------------------------------------------------------ |
+| `/speckit.constitution` | `$speckit-constitution` | Create or update project governing principles and development guidelines |
+| `/speckit.specify`      | `$speckit-plan`         | Define what you want to build (requirements and user stories)            |
+| `/speckit.plan`         | `$speckit-tasks`        | Create technical implementation plans with your chosen tech stack        |
+| `/speckit.tasks`        | `$speckit-tasks`        | Generate actionable task lists for implementation                        |
+| `/speckit.implement`    | `$speckit-implement`    | Execute all tasks to build the feature according to the plan             |
+
+#### Optional Commands
+
+Additional commands for enhanced quality and validation:
+
+| Command              | Description                                                                                                                          |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `/speckit.clarify`   | Clarify underspecified areas (recommended before `/speckit.plan`; formerly `/quizme`)                                                |
+| `/speckit.analyze`   | Cross-artifact consistency & coverage analysis (run after `/speckit.tasks`, before `/speckit.implement`)                             |
+| `/speckit.checklist` | Generate custom quality checklists that validate requirements completeness, clarity, and consistency (like "unit tests for English") |
 
 ## 🔧 Specify CLI Reference
 
-The `specify` command supports the following options:
+The `specify` tool is invoked as
+
+```
+specify <COMMAND> <SUBCOMMAND> <OPTIONS>
+```
+
+and supports the following commands:
 
 ### Commands
 
-| Command | Description                                                                                                                                                                                                                                                                              |
-| ------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `init`  | Initialize a new Specify project from the latest template                                                                                                                                                                                                                                |
-| `check` | Check for installed tools: `git` plus all CLI-based agents configured in `AGENT_CONFIG` (for example: `claude`, `gemini`, `code`/`code-insiders`, `cursor-agent`, `windsurf`, `junie`, `qwen`, `opencode`, `codex`, `kiro-cli`, `shai`, `qodercli`, `vibe`, `kimi`, `iflow`, `pi`, etc.) |
+| Command     | Description                                                                                                                                                                                                                                                                                                                                  |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `init`      | Initialize a new Specify project from the latest template.                                                                                                                                                                                                                                                                                   |
+| `check`     | Check for installed tools: `git` plus all CLI-based agents configured in `AGENT_CONFIG` (for example: `claude`, `gemini`, `code`/`code-insiders`, `cursor-agent`, `windsurf`, `junie`, `qwen`, `opencode`, `codex`, `kiro-cli`, `shai`, `qodercli`, `vibe`, `kimi`, `iflow`, `pi`, etc.). This command does not have any additional options. |
+| `extension` | Manage extensions                                                                                                                                                                                                                                                                                                                            |
+| `preset`    | Manage presets                                                                                                                                                                                                                                                                                                                               |
 
 ### `specify init` Arguments & Options
 
+```
+specify init <PROJECT_NAME> <OPTIONS>
+```
+
 | Argument/Option        | Type     | Description                                                                                                                                                                                                                                                                                                                                                                               |
-| ---------------------- | -------- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `<project-name>`       | Argument | Name for your new project directory (optional if using `--here`, or use `.` for current directory)                                                                                                                                                                                                                                                                                        |
+| ---------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `<PROJECT_NAME>`       | Argument | Name for your new project directory (optional if using `--here`, or use `.` for current directory)                                                                                                                                                                                                                                                                                        |
 | `--ai`                 | Option   | AI assistant to use (see `AGENT_CONFIG` for the full, up-to-date list). Common options include: `claude`, `gemini`, `copilot`, `cursor-agent`, `qwen`, `opencode`, `codex`, `windsurf`, `junie`, `kilocode`, `auggie`, `roo`, `codebuddy`, `amp`, `shai`, `kiro-cli` (`kiro` alias), `agy`, `bob`, `qodercli`, `vibe`, `kimi`, `iflow`, `pi`, or `generic` (requires `--ai-commands-dir`) |
 | `--ai-commands-dir`    | Option   | Directory for agent command files (required with `--ai generic`, e.g. `.myagent/commands/`)                                                                                                                                                                                                                                                                                               |
 | `--script`             | Option   | Script variant to use: `sh` (bash/zsh) or `ps` (PowerShell)                                                                                                                                                                                                                                                                                                                               |
@@ -315,7 +352,7 @@ The `specify` command supports the following options:
 | `--debug`              | Flag     | Enable detailed debug output for troubleshooting                                                                                                                                                                                                                                                                                                                                          |
 | `--github-token`       | Option   | GitHub token for API requests (or set GH_TOKEN/GITHUB_TOKEN env variable)                                                                                                                                                                                                                                                                                                                 |
 | `--ai-skills`          | Flag     | Install Prompt.MD templates as agent skills in agent-specific `skills/` directory (requires `--ai`). Extension commands are also auto-registered as skills when extensions are added later.                                                                                                                                                                                               |
-| `--branch-numbering`   | Option   | Branch numbering strategy: `sequential` (default — `001`, `002`, `003`) or `timestamp` (`YYYYMMDD-HHMMSS`). Timestamp mode is useful for distributed teams to avoid numbering conflicts                                                                                                                                                                                                  |
+| `--branch-numbering`   | Option   | Branch numbering strategy: `sequential` (default — `001`, `002`, `003`) or `timestamp` (`YYYYMMDD-HHMMSS`). Timestamp mode is useful for distributed teams to avoid numbering conflicts                                                                                                                                                                                                   |
 
 ### Examples
 
@@ -397,35 +434,6 @@ specify init my-project --ai claude --branch-numbering timestamp
 specify check
 ```
 
-### Available Slash Commands
-
-After running `specify init`, your AI coding agent will have access to these slash commands for structured development.
-
-For Codex CLI, `--ai-skills` installs spec-kit as agent skills instead of slash-command prompt files.  
-In Codex skills mode, invoke spec-kit as `$speckit-constitution`, `$speckit-specify`, `$speckit-plan`, `$speckit-tasks`, and `$speckit-implement`.
-
-#### Core Commands
-
-Essential commands for the Spec-Driven Development workflow:
-
-| Command                 | Description                                                              |
-| ----------------------- | ------------------------------------------------------------------------ |
-| `/speckit.constitution` | Create or update project governing principles and development guidelines |
-| `/speckit.specify`      | Define what you want to build (requirements and user stories)            |
-| `/speckit.plan`         | Create technical implementation plans with your chosen tech stack        |
-| `/speckit.tasks`        | Generate actionable task lists for implementation                        |
-| `/speckit.implement`    | Execute all tasks to build the feature according to the plan             |
-
-#### Optional Commands
-
-Additional commands for enhanced quality and validation:
-
-| Command              | Description                                                                                                                          |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `/speckit.clarify`   | Clarify underspecified areas (recommended before `/speckit.plan`; formerly `/quizme`)                                                |
-| `/speckit.analyze`   | Cross-artifact consistency & coverage analysis (run after `/speckit.tasks`, before `/speckit.implement`)                             |
-| `/speckit.checklist` | Generate custom quality checklists that validate requirements completeness, clarity, and consistency (like "unit tests for English") |
-
 ### Environment Variables
 
 | Variable          | Description                                                                                                                                                                                                                                                                                            |
@@ -436,21 +444,18 @@ Additional commands for enhanced quality and validation:
 
 Spec Kit can be tailored to your needs through two complementary systems — **extensions** and **presets** — plus project-local overrides for one-off adjustments:
 
-```mermaid
-block-beta
-    columns 1
-    overrides["⬆ Highest priority\nProject-Local Overrides\n.specify/templates/overrides/"]
-    presets["Presets — Customize core & extensions\n.specify/presets/<preset-id>/templates/"]
-    extensions["Extensions — Add new capabilities\n.specify/extensions/<ext-id>/templates/"]
-    core["Spec Kit Core — Built-in SDD commands & templates\n.specify/templates/\n⬇ Lowest priority"]
+| Priority | Component Type                                    | Location                          |
+| -------: | ------------------------------------------------- | --------------------------------- |
+|      ⬆ 1 | Project-Local Overrides                           | `.specify/templates/overrides/`   |
+|        2 | Presets — Customize core & extensions             | `.specify/presets//templates/`    |
+|        3 | Extensions — Add new capabilities                 | `.specify/extensions//templates/` |
+|      ⬇ 4 | Spec Kit Core — Built-in SDD commands & templates | `.specify/templates/`             |
 
-    style overrides fill:transparent,stroke:#999
-    style presets fill:transparent,stroke:#4a9eda
-    style extensions fill:transparent,stroke:#4a9e4a
-    style core fill:transparent,stroke:#e6a817
-```
-
-**Templates** are resolved at **runtime** — Spec Kit walks the stack top-down and uses the first match. Project-local overrides (`.specify/templates/overrides/`) let you make one-off adjustments for a single project without creating a full preset. **Commands** are applied at **install time** — when you run `specify extension add` or `specify preset add`, command files are written into agent directories (e.g., `.claude/commands/`). If multiple presets or extensions provide the same command, the highest-priority version wins. On removal, the next-highest-priority version is restored automatically. If no overrides or customizations exist, Spec Kit uses its core defaults.
+- **Templates** are resolved at **runtime** — Spec Kit walks the stack top-down and uses the first match.
+- Project-local overrides (`.specify/templates/overrides/`) let you make one-off adjustments for a single project without creating a full preset.
+- **Extension/preset commands** are applied at **install time** — when you run `specify extension add` or `specify preset add`, command files are written into agent directories (e.g., `.claude/commands/`).
+- If multiple presets or extensions provide the same command, the highest-priority version wins. On removal, the next-highest-priority version is restored automatically.
+- If no overrides or customizations exist, Spec Kit uses its core defaults.
 
 ### Extensions — Add New Capabilities
 
@@ -556,9 +561,6 @@ If you encounter issues with an agent, please open an issue so we can refine the
 
 ## 📋 Detailed Process
 
-<details>
-<summary>Click to expand the detailed step-by-step walkthrough</summary>
-
 You can use the Specify CLI to bootstrap your project, which will bring in the required artifacts in your environment. Run:
 
 ```bash
@@ -577,7 +579,7 @@ specify init . --force
 specify init --here --force
 ```
 
-![Specify CLI bootstrapping a new project in the terminal](./media/specify_cli.gif)
+![Specify CLI bootstrapping a new project in the terminal](https://github.com/github/spec-kit/raw/main/media/specify_cli.gif)
 
 You will be prompted to select the AI agent you are using. You can also proactively specify it directly in the terminal:
 
@@ -611,7 +613,7 @@ specify init <project_name> --ai claude --ignore-agent-tools
 
 Go to the project folder and run your AI agent. In our example, we're using `claude`.
 
-![Bootstrapping Claude Code environment](./media/bootstrap-claude-code.gif)
+![Bootstrapping Claude Code environment](https://github.com/github/spec-kit/raw/main/media/bootstrap-claude-code.gif)
 
 You will know that things are configured correctly if you see the `/speckit.constitution`, `/speckit.specify`, `/speckit.plan`, `/speckit.tasks`, and `/speckit.implement` commands available.
 
@@ -633,22 +635,7 @@ With your project principles established, you can now create the functional spec
 An example prompt:
 
 ```text
-Develop Taskify, a team productivity platform. It should allow users to create projects, add team members,
-assign tasks, comment and move tasks between boards in Kanban style. In this initial phase for this feature,
-let's call it "Create Taskify," let's have multiple users but the users will be declared ahead of time, predefined.
-I want five users in two different categories, one product manager and four engineers. Let's create three
-different sample projects. Let's have the standard Kanban columns for the status of each task, such as "To Do,"
-"In Progress," "In Review," and "Done." There will be no login for this application as this is just the very
-first testing thing to ensure that our basic features are set up. For each task in the UI for a task card,
-you should be able to change the current status of the task between the different columns in the Kanban work board.
-You should be able to leave an unlimited number of comments for a particular card. You should be able to, from that task
-card, assign one of the valid users. When you first launch Taskify, it's going to give you a list of the five users to pick
-from. There will be no password required. When you click on a user, you go into the main view, which displays the list of
-projects. When you click on a project, you open the Kanban board for that project. You're going to see the columns.
-You'll be able to drag and drop cards back and forth between different columns. You will see any cards that are
-assigned to you, the currently logged in user, in a different color from all the other ones, so you can quickly
-see yours. You can edit any comments that you make, but you can't edit comments that other people made. You can
-delete any comments that you made, but you can't delete comments anybody else made.
+Develop Taskify, a team productivity platform. It should allow users to create projects, add team members, assign tasks, comment and move tasks between boards in Kanban style. In this initial phase for this feature, let's call it "Create Taskify", let's have multiple users but the users will be declared ahead of time, predefined. I want five users in two different categories, one product manager and four engineers. Let's create three different sample projects. Let's have the standard Kanban columns for the status of each task, such as "To Do", "In Progress", "In Review", and "Done". There will be no login for this application as this is just the very first testing thing to ensure that our basic features are set up. For each task in the UI for a task card, you should be able to change the current status of the task between the different columns in the Kanban work board. You should be able to leave an unlimited number of comments for a particular card. You should be able to, from that task card, assign one of the valid users. When you first launch Taskify, it's going to give you a list of the five users to pick from. There will be no password required. When you click on a user, you go into the main view, which displays the list of projects. When you click on a project, you open the Kanban board for that project. You're going to see the columns. You'll be able to drag and drop cards back and forth between different columns. You will see any cards that are assigned to you, the currently logged in user, in a different color from all the other ones, so you can quickly see yours. You can edit any comments that you make, but you can't edit comments that other people made. You can delete any comments that you made, but you can't delete comments anybody else made.
 ```
 
 After this prompt is entered, you should see Claude Code kick off the planning and spec drafting process. Claude Code will also trigger some of the built-in scripts to set up the repository.
@@ -712,9 +699,7 @@ It's important to use the interaction with Claude Code as an opportunity to clar
 You can now be specific about the tech stack and other technical requirements. You can use the `/speckit.plan` command that is built into the project template with a prompt like this:
 
 ```text
-We are going to generate this using .NET Aspire, using Postgres as the database. The frontend should use
-Blazor server with drag-and-drop task boards, real-time updates. There should be a REST API created with a projects API,
-tasks API, and a notifications API.
+We are going to generate this using .NET Aspire, using Postgres as the database. The frontend should use Blazor server with drag-and-drop task boards, real-time updates. There should be a REST API created with a projects API, tasks API, and a notifications API.
 ```
 
 The output of this step will include a number of implementation detail documents, with your directory tree resembling this:
@@ -752,23 +737,13 @@ Check the `research.md` document to ensure that the right tech stack is used, ba
 Additionally, you might want to ask Claude Code to research details about the chosen tech stack if it's something that is rapidly changing (e.g., .NET Aspire, JS frameworks), with a prompt like this:
 
 ```text
-I want you to go through the implementation plan and implementation details, looking for areas that could
-benefit from additional research as .NET Aspire is a rapidly changing library. For those areas that you identify that
-require further research, I want you to update the research document with additional details about the specific
-versions that we are going to be using in this Taskify application and spawn parallel research tasks to clarify
-any details using research from the web.
+I want you to go through the implementation plan and implementation details, looking for areas that could benefit from additional research as .NET Aspire is a rapidly changing library. For those areas that you identify that require further research, I want you to update the research document with additional details about the specific versions that we are going to be using in this Taskify application and spawn parallel research tasks to clarify any details using research from the web.
 ```
 
 During this process, you might find that Claude Code gets stuck researching the wrong thing - you can help nudge it in the right direction with a prompt like this:
 
 ```text
-I think we need to break this down into a series of steps. First, identify a list of tasks
-that you would need to do during implementation that you're not sure of or would benefit
-from further research. Write down a list of those tasks. And then for each one of these tasks,
-I want you to spin up a separate research task so that the net results is we are researching
-all of those very specific tasks in parallel. What I saw you doing was it looks like you were
-researching .NET Aspire in general and I don't think that's gonna do much for us in this case.
-That's way too untargeted research. The research needs to help you solve a specific targeted question.
+I think we need to break this down into a series of steps. First, identify a list of tasks that you would need to do during implementation that you're not sure of or would benefit from further research. Write down a list of those tasks. And then for each one of these tasks, I want you to spin up a separate research task so that the net results is we are researching all of those very specific tasks in parallel. What I saw you doing was it looks like you were researching .NET Aspire in general and I don't think that's gonna do much for us in this case. That's way too untargeted research. The research needs to help you solve a specific targeted question.
 ```
 
 > [!NOTE]
@@ -779,11 +754,7 @@ That's way too untargeted research. The research needs to help you solve a speci
 With the plan in place, you should have Claude Code run through it to make sure that there are no missing pieces. You can use a prompt like this:
 
 ```text
-Now I want you to go and audit the implementation plan and the implementation detail files.
-Read through it with an eye on determining whether or not there is a sequence of tasks that you need
-to be doing that are obvious from reading this. Because I don't know if there's enough here. For example,
-when I look at the core implementation, it would be useful to reference the appropriate places in the implementation
-details where it can find the information as it walks through each step in the core implementation or in the refinement.
+Now I want you to go and audit the implementation plan and the implementation detail files. Read through it with an eye on determining whether or not there is a sequence of tasks that you need to be doing that are obvious from reading this. Because I don't know if there's enough here. For example, when I look at the core implementation, it would be useful to reference the appropriate places in the implementation details where it can find the information as it walks through each step in the core implementation or in the refinement.
 ```
 
 This helps refine the implementation plan and helps you avoid potential blind spots that Claude Code missed in its planning cycle. Once the initial refinement pass is complete, ask Claude Code to go through the checklist once more before you can get to the implementation.
@@ -833,37 +804,4 @@ The `/speckit.implement` command will:
 
 Once the implementation is complete, test the application and resolve any runtime errors that may not be visible in CLI logs (e.g., browser console errors). You can copy and paste such errors back to your AI agent for resolution.
 
-</details>
-
 ---
-
-## 🔍 Troubleshooting
-
-### Git Credential Manager on Linux
-
-If you're having issues with Git authentication on Linux, you can install Git Credential Manager:
-
-```bash
-#!/usr/bin/env bash
-set -e
-echo "Downloading Git Credential Manager v2.6.1..."
-wget https://github.com/git-ecosystem/git-credential-manager/releases/download/v2.6.1/gcm-linux_amd64.2.6.1.deb
-echo "Installing Git Credential Manager..."
-sudo dpkg -i gcm-linux_amd64.2.6.1.deb
-echo "Configuring Git to use GCM..."
-git config --global credential.helper manager
-echo "Cleaning up..."
-rm gcm-linux_amd64.2.6.1.deb
-```
-
-## 💬 Support
-
-For support, please open a [GitHub issue](https://github.com/github/spec-kit/issues/new). We welcome bug reports, feature requests, and questions about using Spec-Driven Development.
-
-## 🙏 Acknowledgements
-
-This project is heavily influenced by and based on the work and research of [John Lam](https://github.com/jflam).
-
-## 📄 License
-
-This project is licensed under the terms of the MIT open source license. Please refer to the [LICENSE](./LICENSE) file for the full terms.
