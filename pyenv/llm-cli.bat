@@ -14,6 +14,10 @@ echo ===== Installing Codex CLI =====
 echo:
 call npm install --cache "%NPM_CACHE%" -g @openai/codex
 
+echo ===== Installing Copilot CLI =====
+echo:
+call npm install --cache "%NPM_CACHE%" -g @github/copilot
+
 REM Claude has a quirk and fails to detect bash. This VAR must be set
 REM before running the installer or CLI. Also added to condar_far.bat.
 set "CLAUDE_CODE_GIT_BASH_PATH=%~dp0Anaconda\Library\bin\bash.exe"
