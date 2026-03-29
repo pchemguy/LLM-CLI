@@ -2,7 +2,7 @@
 url: https://github.com/github/spec-kit/blob/main/README.md
 ---
 <div align="center">
-    <img src="[https://github.com/github/spec-kit/raw/main/media/logo_large.webp" alt="Spec Kit Logo" width="200" height="200"/>
+    <img src="https://github.com/github/spec-kit/raw/main/media/logo_large.webp" alt="Spec Kit Logo" width="200" height="200"/>
     <h1>🌱 Spec Kit</h1>
     <h3><em>Build high-quality software faster.</em></h3>
 </div>
