@@ -4,6 +4,20 @@ urls:
   - https://github.com/mnriem/spec-kit-dotnet-cli-demo
 ---
 
+## Spec Kit Agents
+
+| Agent                 | Purpose                                             |
+|-----------------------|-----------------------------------------------------|
+| speckit.constitution  | Define project-wide principles and governance       |
+| speckit.specify       | Generate a feature specification from a description |
+| speckit.clarify       | Ask targeted questions to tighten an existing spec  |
+| speckit.plan          | Produce a technical design and implementation plan  |
+| speckit.analyze       | Check consistency across spec, plan, and tasks      |
+| speckit.tasks         | Generate a dependency-ordered task list             |
+| speckit.checklist     | Produce a custom quality checklist                  |
+| speckit.implement     | Execute tasks from tasks.md                         |
+| speckit.taskstoissues | Convert tasks into GitHub Issues                    |
+
 ## Greenfield Spring Boot + React Analytics Platform — spec-kit Demo
 
 https://github.com/mnriem/spec-kit-spring-react-demo
