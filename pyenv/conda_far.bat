@@ -178,6 +178,10 @@ if not defined JAVA_HOME (
 echo %OKOK% Conda activation succeeded.
 
 :: --- Activate Rust ---
+:: 
+:: Rust require MS Build Tools
+:: Rust installation https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe
+::      must be executed from a shell with activated MS Build Tools.
 
 if exist "%USERPROFILE%\.cargo\bin\cargo.exe" (
     set "PATH=%PATH%;%USERPROFILE%\.cargo\bin"
