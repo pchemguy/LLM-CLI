@@ -3,9 +3,8 @@
 :: ============================================================================
 ::  Purpose:
 ::    Orchestrates initialization and activation of a minimal Conda-based
-::    development environment for Windows-based FFCV/fastxtend builds.
-::    Ensures correct setup of MS Build Tools, Conda/Micromamba environment,
-::    and native library dependencies (pthreads, OpenCV, libjpeg-turbo).
+::    development environment for Windows-based builds.
+::    Ensures correct setup of MS Build Tools and Conda/Micromamba environment.
 ::
 ::  Description:
 ::    This script serves as the main entry point for environment activation
@@ -13,9 +12,7 @@
 ::      - cmd.exe Delayed Expansion is enabled
 ::      - The shell is free from preactivated Python/Conda contexts
 ::      - MS Build Tools are available and activated
-::      - Required libraries are initialized via their respective scripts
-::      - Proper INCLUDE, LIB, LINK, and PATH variables are configured
-::      - Environment is ready for subsequent FFCV installation or builds
+::      - Rust toolchain path is activated, if available.
 ::
 ::  Invocation Modes:
 ::      /batch        - Activates environment variables only; does not launch
@@ -30,11 +27,9 @@
 ::      1. Verifies cmd.exe configuration and base environment cleanliness.
 ::      2. Activates MS Build Tools environment or notifies user of failure.
 ::      3. Ensures Conda (or Micromamba) environment readiness.
-::      4. Sequentially activates pthreads, OpenCV, and libjpeg-turbo.
-::      5. Updates INCLUDE, LIB, and LINK paths to integrate Conda libraries.
-::      6. Exposes DISTUTILS_USE_SDK=1 to enable setuptools to reuse the
+::      4. Exposes DISTUTILS_USE_SDK=1 to enable setuptools to reuse the
 ::         existing MSVC environment instead of launching new compiler shells.
-::      7. Starts FAR Manager if available, or leaves the user in a prepared
+::      5. Starts FAR Manager if available, or leaves the user in a prepared
 ::         cmd.exe session.
 ::
 ::  Exit Codes:
@@ -181,6 +176,13 @@ if not defined JAVA_HOME (
 )            
 
 echo %OKOK% Conda activation succeeded.
+
+:: --- Activate Rust ---
+
+if exist "%USERPROFILE%\.cargo\bin\cargo.exe" (
+    set "PATH=%PATH%;%USERPROFILE%\.cargo\bin"
+    echo %OKOK% Cargo bin path has been added to PATH.
+)            
 
 :: --- Claude Code Quirk ---
 
