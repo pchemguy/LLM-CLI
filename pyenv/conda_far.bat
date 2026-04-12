@@ -111,6 +111,32 @@ if not "%ERRORLEVEL%"=="0" (
   goto :CLEANUP
 )
 
+:: --- MS Build Tools ---
+
+if not exist "%~dp0msbuild.bat" (
+  echo %ERROR% MSBUILD activation script not found: "%~dp0msbuild.bat". Aborting...
+  set "FINAL_EXIT_CODE=1"
+  goto :CLEANUP
+)
+call "%~dp0msbuild.bat"
+if not "%ERRORLEVEL%"=="0" (
+  echo %ERROR% MSBuild activation failed. Aborting...
+  set "FINAL_EXIT_CODE=1"
+  goto :CLEANUP
+)
+
+:: --- Have Python/setuptools/distutils use preactivated MS Build Tools environment. ---
+
+set "DISTUTILS_USE_SDK=1"
+
+:: MSYS by default places its bin in front of PATH and shadows MS Build link.exe.
+
+if exist "%__CONDA_PREFIX%\Library\usr\bin\link.exe" (
+    del /Q "%__CONDA_PREFIX%\Library\usr\bin\link.exe"
+)
+
+call :COLOR_SCHEME
+
 :: --- Python.exe and conda.bat must exist in Conda environment ---
 
 if not exist "%__CONDA_PREFIX%\python.exe" (
@@ -156,28 +182,6 @@ if not defined JAVA_HOME (
 )            
 
 echo %OKOK% Conda activation succeeded.
-
-:: --- MS Build Tools ---
-:: 
-:: Activate AFTER Conda to avoid shadowing of MS Build link.exe with that of MSYS.
-
-if not exist "%~dp0msbuild.bat" (
-  echo %ERROR% MSBUILD activation script not found: "%~dp0msbuild.bat". Aborting...
-  set "FINAL_EXIT_CODE=1"
-  goto :CLEANUP
-)
-call "%~dp0msbuild.bat"
-if not "%ERRORLEVEL%"=="0" (
-  echo %ERROR% MSBuild activation failed. Aborting...
-  set "FINAL_EXIT_CODE=1"
-  goto :CLEANUP
-)
-
-:: --- Have Python/setuptools/distutils use preactivated MS Build Tools environment. ---
-
-set "DISTUTILS_USE_SDK=1"
-
-call :COLOR_SCHEME
 
 :: --- Activate Rust ---
 :: 
