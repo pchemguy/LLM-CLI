@@ -6,6 +6,7 @@ dependencies:
   - numpy
   - matplotlib
   - m2-base
+  - ripgrep
   - nodejs
   - gh
   - pnpm
