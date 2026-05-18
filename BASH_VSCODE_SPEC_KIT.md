@@ -73,18 +73,18 @@ This explicitly points to the Bash executable.
 
 ## VS Code Configuration
 
-VS Code should be aligned with the same Bash path to ensure:
+### code.bat
 
-* terminal consistency
-* predictable agent execution context
+```Batch
+:: Make sure the stupid PS is not visible to VS Code
+set "Path=%Path:C:\Windows\System32\WindowsPowerShell\v1.0;=%"
 
-Add the following to:
-
-```
-%APPDATA%\Code\User\settings.json
+start "" "%~dpn0.exe"
 ```
 
 ### Terminal Profiles
+
+`%APPDATA%/Code/User/settings.json`
 
 ```json
 {
@@ -98,14 +98,26 @@ Add the following to:
             "icon": "terminal-cmd"
         },
         "Git Bash": {
-            "path": "${env:CLAUDE_CODE_GIT_BASH_PATH}",
-            "args": [
-                "--login",
-                "-i"
-            ]
-        }
+            "path": "${env:CLAUDE_CODE_GIT_BASH_PATH}", 
+            "args": ["--login", "-i"]
+        },
+        "PowerShell": null 
     },
-    "terminal.integrated.defaultProfile.windows": "Git Bash"
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "terminal.integrated.agentHostProfile.windows": "Git Bash",
+    "terminal.integrated.automationProfile.windows": "Git Bash",
+}
+```
+
+### Telemetry
+
+`%APPDATA%/Code/User/settings.json`
+
+```json
+{
+    "telemetry.telemetryLevel": "off",
+    "telemetry.feedback.enabled": false,
+    "telemetry.editStats.enabled": false,
 }
 ```
 
