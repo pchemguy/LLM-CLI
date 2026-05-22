@@ -9,6 +9,8 @@ You MUST use either (both are available)
 
 - cmd.exe /c <command>
   cmd.exe /c git status
-- bash -lc '<command>'
-  bash -lc 'git status'
+- bash -c '<command>'
+  bash -c 'git status'
+
+You MUST always run Git Bash and `m2-base` commands outside sandbox.
 ```
