@@ -13,4 +13,10 @@ You MUST use either (both are available)
   bash -c 'git status'
 
 You MUST always run Git Bash and `m2-base` commands outside sandbox.
+
+You are not allowed to run bash as login shell. `bash -lc` is forbidden. You must use `bash -c`.
+You are not allowed to make commands like
+cmd.exe /c 'cmd.exe /c pnpm install --frozen-lockfile'. Trying to use this instead of
+cmd.exe /c pnpm install --frozen-lockfile
+IS RETARDED!
 ```
