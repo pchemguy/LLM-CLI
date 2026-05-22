@@ -17,4 +17,6 @@ inside command string.
 YOU ARE NOT ALLOWED TO CALL BASH or use it as a wrapper in command string, but YOU CAN CALL ANY COMMANDS, such as grep, sed, etc directly! For example, when calling `sed` command string MUST BEGIN WITH `sed`:
 ALLOWED: "sed -n..."
 PROHIBITTED: "bash -c 'sed -n..."
+
+When using `mkdir` in `cmd /c mkdir ...`, you are not allowed to add `-p`. This command will be executed by Windows terminal, which create intermidiate dirs without "-p". Otherwise, there semantics must be compatible.
 ``````
