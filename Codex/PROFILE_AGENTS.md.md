@@ -14,30 +14,5 @@ You MUST use either (both are available)
 
 You MUST always run Git Bash and `m2-base` commands outside sandbox.
 
-Do not duplicate the same command wrapper. The forbidden pattern is repeating the same wrapper back-to-back.
-
-Allowed:
-
-```bash
-cmd.exe /c git status
-bash -c 'git status'
-```
-
-Forbidden:
-
-```bash
-cmd.exe /c "cmd.exe /c git status"
-cmd /c "cmd /c git status"
-bash -c "bash -c 'git status'"
-```
-
-Prefer Git Bash directly when POSIX shell execution is needed:
-
-```bash
-bash -c 'git status'
-```
-
-PowerShell is also prohibited. If a tool reports that it is running PowerShell, stop and do not use that shell.
-
-All Git Bash and `m2-base` commands must run outside the sandbox when command execution is available.
+DO NOT EVER PUT "cmd /c" or "cmd.exe /c" inside command string.
 ``````
