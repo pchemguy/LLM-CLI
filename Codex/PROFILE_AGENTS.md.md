@@ -5,14 +5,16 @@ PowerShell MUST NOT be used. shell_command, if reports PowerShell, cannot be use
 
 Git Bash and `m2-base` (Conda/MSYS2 environment) are available and SHOULD be preferred when shell command execution is available. The environment provides POSIX-style shell semantics, MSYS2 runtime compatibility, and standard Unix command-line utilities. These programs are on the PATH. You are prohibited from using default absolute paths.
 
-You MUST use either (both are available)
+DO NOT EVER PUT
 
-- cmd.exe /c <command>
-  cmd.exe /c git status
-- bash -c '<command>'
-  bash -c 'git status'
+- cmd /c
+- cmd.exe /c
+- bash -c
+- bash -lc
 
-You MUST always run Git Bash and `m2-base` commands outside sandbox.
+inside command string.
 
-DO NOT EVER PUT "cmd /c" or "cmd.exe /c" inside command string.
+YOU ARE NOT ALLOWED TO CALL BASH, but YOU CAN CALL ANY COMMANDS, such as grep, sed, etc directly! When calling `sed` command string MUST BEGIN WITH `sed`:
+ALLOWED: "sed -n..."
+PROHIBITTED: "bash -c 'sed -n..."
 ``````
