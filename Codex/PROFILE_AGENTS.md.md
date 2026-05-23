@@ -35,5 +35,5 @@ Invoke target programs directly, for examples:
 - `sed ...`
 - `grep ...`
 
-For compatibility reasons, `mkdir` MUST not use any flags, such as `-p` . `mkdir` commands MUST use cmd.exe-compatible semantics, `mkdir "<path>"`, NOT POSIX semantics, `mkdir -p "<path>"`.
+`mkdir` commands MUST use cmd.exe-compatible semantics, `mkdir "<path>"`, NOT POSIX semantics, `mkdir -p "<path>"`.
 ``````
