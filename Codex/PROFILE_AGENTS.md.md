@@ -1,24 +1,43 @@
 Note: remove outer code block before copying into `.codex/AGENTS.md`.
 
 ``````markdown
-PowerShell MUST NOT be used. shell_command, if reports PowerShell, cannot be used.
+## Shell and Command Execution Policy
 
-Git Bash and `m2-base` (Conda/MSYS2 environment) are available and SHOULD be preferred when shell command execution is available. The environment provides POSIX-style shell semantics, MSYS2 runtime compatibility, and standard Unix command-line utilities. These programs are on the PATH. You are prohibited from using default absolute paths. `m2-base` commands must always be executed outside sandbox.
+### Available and Prohibited Tooling
 
-YOU ARE NOT ALLOWED to start a command string with a shell call (e.g., `cmd /c` or `bash -c`) or include explicit shell calls inside command string. When calling any shell commands, call them directly, strating command string with the desired command, such as `cd`, `mkdir`, `grep`, `sed`, etc.
+PowerShell (`powershell`, `pwsh`) must not be invoked at all. Do not generate PowerShell scripts, syntax, pipelines, or command idioms.
 
-Command string examples, when calling shell commands:
+Git Bash and the Conda `m2-base` MSYS2 environment are available and should be preferred for POSIX-style shell operations and Unix command-line tooling when shell execution is required. These tools must always be called outside the sandbox environment.
 
-- **ALLOWED**:
-    - sed -n ...
-    - mkdir ...
-    - git status
-- **PROHIBITED**
-    - bash -c 'sed -n ...'
-    - bash -c 'git status'
-    - bash -lc 'grep ...'
-    - cmd /c mkdir ...
-    - cmd.exe /c cd ...
+Windows cmd.exe commands can also be used, but must be called directly, not via `cmd /c ...` syntax.
 
-When calling `mkdir`, you must use cmd.exe-style semantics: do NOT include the POSIX-style `-p` flag. Windows shell creates intermidiate dirs without the `-p` flag, not supported by cmd.exe.
+### Path Policies
+
+Do not use platform-specific default paths, such as `C:/Program Files/Git/cmd/git.exe`. Prefer:
+
+- PATH-based executable resolution,
+- repository-relative paths,
+- relative paths,
+- tool-provided working directories.
+
+Prefer POSIX-style forward slashes as path separators.
+
+### Prohibited
+
+Do not invoke commands through intermediary shells:
+
+- `bash -c '...'`
+- `bash -lc '...'`
+- `cmd /c ...`
+- `cmd.exe /c ...`
+
+### Preferred
+
+Invoke target programs directly, for examples:
+
+- `git status`
+- `sed ...`
+- `grep ...`
+
+`mkdir` is a special case. Even when POSIX-style tools are otherwise preferred, `mkdir` commands MUST use cmd.exe-compatible semantics. Do not use `mkdir -p`. `mkdir` must not use any flags. Use plain `mkdir "<path>"`.
 ``````
