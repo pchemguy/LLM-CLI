@@ -1,3 +1,5 @@
+## `.codex/AGENTS.md`
+
 Note: remove outer code block before copying into `.codex/AGENTS.md`.
 
 ``````markdown
@@ -37,3 +39,10 @@ Invoke target programs directly, for examples:
 
 `mkdir` commands MUST use cmd.exe-compatible semantics, `mkdir "<path>"`, NOT POSIX semantics, `mkdir -p "<path>"`.
 ``````
+
+## `.codex/rules/default.rules`
+
+```text
+prefix_rule(pattern=["cmd.exe", "/c"], decision="allow")
+prefix_rule(pattern=["cmd",     "/c"], decision="allow")
+```
