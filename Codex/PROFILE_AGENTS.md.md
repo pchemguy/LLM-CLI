@@ -5,9 +5,9 @@ Note: remove outer code block before copying into `.codex/AGENTS.md`.
 
 ### Available and Prohibited Tooling
 
-The default terminal shell is `cmd.exe`, not `PowerShell.exe`/`pwsh.exe`. Do not generate PowerShell scripts, syntax, pipelines, or command idioms.
+Use cmd.exe shell commands for file system operations. PowerShell/pwsh scripts, syntax, pipelines, Cmdlets, or command idioms are prohibited.
 
-Git Bash and the Conda `m2-base` MSYS2 environment are available and should be preferred for POSIX-style shell operations and Unix command-line tooling when shell execution is required.
+Git Bash and the Conda `m2-base` MSYS2 environment is available, and POSIX-style command-line tooling (such as, grep, sed, etc.) should be used for advanced operations. Git Bash and `m2-base` tools MUST always be executed outside the sandbox.
 
 ### Path Policies
 
