@@ -35,5 +35,5 @@ Invoke target programs directly, for examples:
 - `sed ...`
 - `grep ...`
 
-`mkdir` is a special case. Even when POSIX-style tools are otherwise preferred, `mkdir` commands MUST use cmd.exe-compatible semantics. Do not use `mkdir -p`. `mkdir` must not use any flags. Use plain `mkdir "<path>"`.
+For compatibility reasons, `mkdir` MUST not use any flags, such as `-p` . `mkdir` commands MUST use cmd.exe-compatible semantics, `mkdir "<path>"`, NOT POSIX semantics, `mkdir -p "<path>"`.
 ``````
