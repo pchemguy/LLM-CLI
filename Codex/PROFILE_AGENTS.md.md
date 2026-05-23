@@ -41,3 +41,6 @@ Invoke target programs directly, for examples:
 
 `mkdir` is a special case. Even when POSIX-style tools are otherwise preferred, `mkdir` commands MUST use cmd.exe-compatible semantics. Do not use `mkdir -p`. `mkdir` must not use any flags. Use plain `mkdir "<path>"`.
 ``````
+
+
+PowerShell (`powershell`, `pwsh`) invocation is strictly prohibited. 
