@@ -1,4 +1,9 @@
-## `.codex/AGENTS.md`
+
+## PREFIX
+
+**All relative paths are based on %USERPROFILE%/.codex**
+
+## AGENTS.md
 
 Note: remove outer code block before copying into `.codex/AGENTS.md`.
 
@@ -40,9 +45,18 @@ Invoke target programs directly, for examples:
 `mkdir` commands MUST use cmd.exe-compatible semantics, `mkdir "<path>"`, NOT POSIX semantics, `mkdir -p "<path>"`.
 ``````
 
-## `.codex/rules/default.rules`
+## `rules/default.rules`
 
 ```text
 prefix_rule(pattern=["cmd.exe", "/c"], decision="allow")
 prefix_rule(pattern=["cmd",     "/c"], decision="allow")
 ```
+
+## Important Locations
+
+| Directory                                            | Description                  |
+| ---------------------------------------------------- | ---------------------------- |
+| `plugins/cache/<VENDOR COLLECTION>/<NAME>/<VERSION>` | Third-party plugins          |
+| `vendor_imports/skills/skills/.curated`              | System skills                |
+| `skills`                                             | Active skills                |
+| `.tmp/plugins/plugins`                               | Official Codex plugins cache |
