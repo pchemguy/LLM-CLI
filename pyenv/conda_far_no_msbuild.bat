@@ -11,8 +11,6 @@
 ::    and dependency management. It guarantees that:
 ::      - cmd.exe Delayed Expansion is enabled
 ::      - The shell is free from preactivated Python/Conda contexts
-::      - MS Build Tools are available and activated
-::      - Rust toolchain path is activated, if available.
 ::
 ::  Invocation Modes:
 ::      /batch        - Activates environment variables only; does not launch
@@ -25,11 +23,8 @@
 ::
 ::  Behavioral Summary:
 ::      1. Verifies cmd.exe configuration and base environment cleanliness.
-::      2. Activates MS Build Tools environment or notifies user of failure.
-::      3. Ensures Conda (or Micromamba) environment readiness.
-::      4. Exposes DISTUTILS_USE_SDK=1 to enable setuptools to reuse the
-::         existing MSVC environment instead of launching new compiler shells.
-::      5. Starts FAR Manager if available, or leaves the user in a prepared
+::      2. Ensures Conda (or Micromamba) environment readiness.
+::      3. Starts FAR Manager if available, or leaves the user in a prepared
 ::         cmd.exe session.
 ::
 ::  Exit Codes:
@@ -111,32 +106,6 @@ if not "%ERRORLEVEL%"=="0" (
   goto :CLEANUP
 )
 
-:: --- MS Build Tools ---
-
-if not exist "%~dp0msbuild.bat" (
-  echo %ERROR% MSBUILD activation script not found: "%~dp0msbuild.bat". Aborting...
-  set "FINAL_EXIT_CODE=1"
-  goto :CLEANUP
-)
-call "%~dp0msbuild.bat"
-if not "%ERRORLEVEL%"=="0" (
-  echo %ERROR% MSBuild activation failed. Aborting...
-  set "FINAL_EXIT_CODE=1"
-  goto :CLEANUP
-)
-
-:: --- Have Python/setuptools/distutils use preactivated MS Build Tools environment. ---
-
-set "DISTUTILS_USE_SDK=1"
-
-:: MSYS by default places its bin in front of PATH and shadows MS Build link.exe.
-
-if exist "%__CONDA_PREFIX%\Library\usr\bin\link.exe" (
-    del /Q "%__CONDA_PREFIX%\Library\usr\bin\link.exe"
-)
-
-call :COLOR_SCHEME
-
 :: --- Python.exe and conda.bat must exist in Conda environment ---
 
 if not exist "%__CONDA_PREFIX%\python.exe" (
@@ -182,17 +151,6 @@ if not defined JAVA_HOME (
 )            
 
 echo %OKOK% Conda activation succeeded.
-
-:: --- Activate Rust ---
-:: 
-:: Rust require MS Build Tools
-:: Rust installation https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe
-::      must be executed from a shell with activated MS Build Tools.
-
-if exist "%USERPROFILE%\.cargo\bin\cargo.exe" (
-    set "PATH=%PATH%;%USERPROFILE%\.cargo\bin"
-    echo %OKOK% Cargo bin path has been added to PATH.
-)            
 
 :: --- Claude Code Quirk ---
 
