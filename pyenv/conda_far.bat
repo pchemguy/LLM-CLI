@@ -218,6 +218,7 @@ for %%A in ("far.bat" "far.exe") do (
 :START_FARMANAGER
 
 if not defined _FARMANAGER set "_FARMANAGER=cd"
+call :CLEANUP & (set "__CONDA_PREFIX=%__CONDA_PREFIX%")
 cmd /E:ON /V:ON /K "%_FARMANAGER% ""%__CONDA_PREFIX%"""
 set "_FARMANAGER="
 
