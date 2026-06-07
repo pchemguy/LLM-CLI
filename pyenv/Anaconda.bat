@@ -232,6 +232,7 @@ exit /b %FINAL_EXIT_CODE%
 :: ---------------------------------------------------------------------
 
 if defined _ARG_NOCOLOR set "NOCOLOR=1"
+if defined NO_COLOR set "NOCOLOR=1"
 if defined NOCOLOR (
   set  "INFO= [INFO]  "
   set  "OKOK= [-OK-]  "

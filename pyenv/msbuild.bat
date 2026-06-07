@@ -218,6 +218,8 @@ exit /b %EXIT_STATUS%
 :: Color Scheme (with NOCOLOR fallback)
 :: ---------------------------------------------------------------------
 
+if defined NO_COLOR set "NOCOLOR=1"
+
 if defined NOCOLOR (
   set  "INFO= [INFO]  "
   set  "OKOK= [-OK-]  "

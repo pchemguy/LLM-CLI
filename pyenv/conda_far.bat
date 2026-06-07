@@ -200,6 +200,14 @@ rem Claude Code Quirk -- If this line is removed, some really weird bug with "/b
 set "CLAUDE_CODE_GIT_BASH_PATH=%CONDA_PREFIX%\Library\bin\bash.exe"
 echo %OKOK% CLAUDE_CODE_GIT_BASH_PATH is set.
 
+:: --- Hugging Face ---
+
+set "HF_HOME=%USERPROFILE%\Downloads\.cache\huggingface"
+set "HF_HUB_DISABLE_TELEMETRY=1"
+set "HF_HUB_DISABLE_UPDATE_CHECK=1"
+set "HF_XET_RECONSTRUCT_WRITE_SEQUENTIALLY=1"
+echo %OKOK% Hugging Face is set.
+
 :: --- Use "/batch" to activate shell environment without starting FAR MANAGER ---
 
 set "FINAL_EXIT_CODE=0"
@@ -236,6 +244,7 @@ goto :CLEANUP
 :: ---------------------------------------------------------------------
 
 if defined _ARG_NOCOLOR set "NOCOLOR=1"
+if defined NO_COLOR set "NOCOLOR=1"
 if defined NOCOLOR (
   set  "INFO= [INFO]  "
   set  "OKOK= [-OK-]  "
