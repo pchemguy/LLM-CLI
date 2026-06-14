@@ -324,11 +324,13 @@ if not "%ERRORLEVEL%"=="0" (
   set "_CACHE="
   exit /b !EXIT_STATUS!
 )
-set "PIP_CACHE_DIR=%_CACHE%\Python\pip"
+set "PIP_CACHE_DIR=%_CACHE%\Python\pip\cache"
+set "UV_CACHE_DIR=%_CACHE%\Python\uv\cache"
 
 echo %INFO% CACHE directory: "%_CACHE%".
 echo %INFO% CONDA_PKGS_DIRS directory: "%CONDA_PKGS_DIRS%".
 echo %INFO% PIP_CACHE_DIR   directory: "%PIP_CACHE_DIR%".
+echo %INFO% UV_CACHE_DIR    directory: "%UV_CACHE_DIR%".
 
 exit /b 0
 :: ============================================================================
