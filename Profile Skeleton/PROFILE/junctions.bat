@@ -1,22 +1,18 @@
 @echo off
 
-pushd "%CD%"
-cd /d "%~dp0"
 
-for /d %%D in ("USERPROFILE\*") do (
+for /d %%D in ("%~dp0USERPROFILE\*") do (
     set "SRC=%%~D"
-    set "DST=!SRC:USERPROFILE=%USERPROFILE%!"
+    set "DST=!SRC:%~dp0USERPROFILE=%USERPROFILE%!"
 
-    if exist "!DST!" rmdir /S /Q "!DST!"
+    if exist "!DST!" rmdir "!DST!"
     mklink /j "!DST!" "!SRC!"
 )
 
-for /d %%D in ("APPDATA\*") do (
+for /d %%D in ("%~dp0APPDATA\*") do (
     set "SRC=%%~D"
-    set "DST=!SRC:APPDATA=%APPDATA%!"
+    set "DST=!SRC:%~dp0APPDATA=%APPDATA%!"
 
-    if exist "!DST!" rmdir /S /Q "!DST!"
+    if exist "!DST!" rmdir "!DST!"
     mklink /j "!DST!" "!SRC!"
 )
-
-popd
