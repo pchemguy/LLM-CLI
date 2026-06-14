@@ -398,6 +398,7 @@ if not "%ERRORLEVEL%"=="0" (
   set "_CACHE="
   exit /b !EXIT_STATUS!
 )
+
 set "PIP_CACHE_DIR=%_CACHE%\Python\pip\cache"
 set "UV_CACHE_DIR=%_CACHE%\Python\uv\cache"
 
@@ -405,6 +406,20 @@ echo %INFO% CACHE directory: "%_CACHE%".
 echo %INFO% CONDA_PKGS_DIRS directory: "%CONDA_PKGS_DIRS%".
 echo %INFO% PIP_CACHE_DIR   directory: "%PIP_CACHE_DIR%".
 echo %INFO% UV_CACHE_DIR    directory: "%UV_CACHE_DIR%".
+
+set "SRC=%PIP_CACHE_DIR%"
+set "DST=%LOCALAPPDATA%\pip\cache"
+if exist "!DST!" cmd /c rmdir /S /Q "!DST!"
+mklink /j "!DST!" "!SRC!" && (
+    echo %INFO% Profile pip cache dir is linked: "%DST%".
+)
+
+set "SRC=%UV_CACHE_DIR%"
+set "DST=%LOCALAPPDATA%\uv\cache"
+if exist "!DST!" cmd /c rmdir /S /Q "!DST!"
+mklink /j "!DST!" "!SRC!" && (
+    echo %INFO% Profile uv cache dir is linked: "%DST%".
+)
 
 exit /b 0
 :: ============================================================================
