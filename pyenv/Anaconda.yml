@@ -1,22 +1,56 @@
-name: llm_clis
+name: llm_clis_cuda
 channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - numpy
-  - matplotlib
+  - pytorch
+  - pytorch-cuda
+  - torchvision
+  - torchaudio
+  - cupy
+  - cudnn
+  - cutensor
+  - fastai
+  - albumentations
+  - nbdev
+  - timm
+  - numpy<2 # This is temporarily needed until PyTorch is compatible with numpy 2.x
+  - pandas
+  - numba
+  - jupyterlab
+  - ipykernel
+  - ipywidgets
   - m2-base
+  - gh
   - huggingface_hub
   - ripgrep
   - nodejs
-  - gh
   - pnpm
   - openjdk
+  - matplotlib
+  - dash
+  - graphistry
+  - xarray-spatial
+  - pkg-config
+  - tqdm
+  - psutil
+  - terminaltables
+  - librosa
+  - kornia
+  - rich
+  - typer
+  - wandb
+  - huggingface_hub
+  - transformers
+  - tokenizers
+  - datasets
+  - jsonschema
+  - pyyaml
+  - colorama
   - pytest
   - pytest-cov
   - pytest-benchmark
   - coverage
-  - colorama
-  - jsonschema
-  - pyyaml
   - pip
+  - pip:
+    - liteparse
