@@ -54,14 +54,31 @@ if defined VSINSTALLDIR if exist "%_VCVARS%" (
   goto :MSBUILD_ACTIVATED
 )
 
-:: --- Check for default locations of VS editions  ---
+:: --- Check for default locations of VS editions ---
 
 set "_MSVS=%ProgramFiles%\Microsoft Visual Studio"
-for /f "usebackq delims=" %%Y in (`dir /b /O:-N "%_MSVS%"`) do (
-    for /d %%E in ("%_MSVS%\%%Y\*") do (
-        set "_VCVARS=%%E\VC\Auxiliary\Build\vcvarsall.bat"
-        if exist "!_VCVARS!" goto :MSBUILD_ACTIVATION
-        set "_VCVARS="
+echo %INFO% MSBuild: Checking for default locations of VS editions in "%_MSVS%\{VERSION}\{KIND}".
+if exist "%_MSVS%" (
+    for /f "usebackq delims=" %%Y in (`dir /b /O:-N "%_MSVS%"`) do (
+        for /d %%E in ("%_MSVS%\%%Y\*") do (
+            set "_VCVARS=%%E\VC\Auxiliary\Build\vcvarsall.bat"
+            if exist "!_VCVARS!" goto :MSBUILD_ACTIVATION
+            set "_VCVARS="
+        )
+    )
+)
+
+:: --- Check for custom locations of VS editions in dev ---
+
+set "_MSVS=%~dp0..\Microsoft Visual Studio"
+echo %INFO% MSBuild: Checking for custom locations of VS editions in "%_MSVS%\{VERSION}\{KIND}".
+if exist "%_MSVS%" (
+    for /f "usebackq delims=" %%Y in (`dir /b /O:-N "%_MSVS%"`) do (
+        for /d %%E in ("%_MSVS%\%%Y\*") do (
+            set "_VCVARS=%%E\VC\Auxiliary\Build\vcvarsall.bat"
+            if exist "!_VCVARS!" goto :MSBUILD_ACTIVATION
+            set "_VCVARS="
+        )
     )
 )
 
@@ -147,13 +164,12 @@ if exist "%_VCVARS%" goto :MSBUILD_ACTIVATION
 
 set "EXIT_STATUS=1"
 echo %ERROR% MSBuild: MS Build Tools activation script not found.
-echo %INFO% MSBuild: If MS Build Tools are installed, either
-echo %INFO% MSBuild:   - start this script from a preactivated MS Build Tools shell
-echo %INFO% MSBuild:   - see script notes above regarding checked locations and variables
-echo %INFO% MSBuild: See this accepted SO answer https://stackoverflow.com/a/64262038/17472988
-echo %INFO% MSBuild: regarding MS Build Tools installation.
+echo %ERROR% MSBuild: If MS Build Tools are installed, either
+echo %ERROR% MSBuild:   - start this script from a preactivated MS Build Tools shell
+echo %ERROR% MSBuild:   - see script notes above regarding checked locations and variables
+echo %ERROR% MSBuild: See this accepted SO answer https://stackoverflow.com/a/64262038/17472988
+echo %ERROR% MSBuild: regarding MS Build Tools installation.
 echo:
-echo %ERROR% MSBuild: FFCV will not get installed without compiler.
 goto :MSBUILD_ACTIVATED
 
 :MSBUILD_ACTIVATION
@@ -166,6 +182,7 @@ if not exist "%_VCVARS:all.bat=64.bat%" (
   goto :MSBUILD_ACTIVATED
 )
 
+set "VSCMD_SKIP_SENDTELEMETRY=1"
 echo:
 echo %WARN% MSBuild: Activating MS Build Tools.
 echo %INFO% MSBuild: Calling "%_VCVARS:all.bat=64.bat%"
@@ -185,15 +202,14 @@ if not defined VSINSTALLDIR (
   goto :MSBUILD_ACTIVATED
 )
 
-if exist "%VSINSTALLDIR%\VC\Auxiliary\Build\vcvarsall.bat" (
+if exist "%VSINSTALLDIR%VC\Auxiliary\Build\vcvarsall.bat" (
   set "EXIT_STATUS=0"
 ) else (
   set "EXIT_STATUS=1"
 )
-if "!EXIT_STATUS!"=="0" (
-  echo %INFO% MSBuild: VSINSTALLDIR points to "%VSINSTALLDIR%".
-  echo:
+if "%EXIT_STATUS%"=="0" (
   echo %OKOK% MSBuild: MS Build Tools activation succeeded.
+  echo %OKOK% MSBuild: VSINSTALLDIR points to "%VSINSTALLDIR:~0,-1%".
 ) else (
   echo %ERROR% MSBuild: MS Build Tools activation failed.
   echo %ERROR% MSBuild: Used script "%_VCVARS:all.bat=64.bat%".
@@ -217,8 +233,6 @@ exit /b %EXIT_STATUS%
 :: ---------------------------------------------------------------------
 :: Color Scheme (with NOCOLOR fallback)
 :: ---------------------------------------------------------------------
-
-if defined NO_COLOR set "NOCOLOR=1"
 
 if defined NOCOLOR (
   set  "INFO= [INFO]  "
